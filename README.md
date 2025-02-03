@@ -1,39 +1,33 @@
-# Estudio exploratorio e impacto de las características operativas en la rentabilidad mensual de fondos de inversión colectiva en Colombia para el año 2024.
+# Informe Visual y Tablero de Análisis de Subsidios, Consumo y Facturación del Servicio de Agua en Sincelejo (2020).
 
 ## Resumen
 
-El objetivo de este proyecto fue investigar cómo las características operativas y propias de los Fondos de Inversión Colectiva (FIC) influyen en su rentabilidad mensual, mediante un análisis y modelado estadístico realizado sobre información suministrada por la Superintendencia Financiera de Colombia bajo la categoría de "Hacienda y crédito público", en relación con los rendimientos individuales de los FIC en Colombia para el año 2024. Este estudio tuvo como propósito principal identificar patrones, relaciones significativas y tendencias, proporcionando una base sólida para futuros estudios y estrategias operativas. 
+El objetivo de este proyecto fue diseñar e implementar un informe visual para analizar la cobertura, consumo, facturación y subsidios del servicio de agua potable y alcantarillado en Sincelejo durante el año 2020. Para ello, se desarrolló un tablero de control estático en Looker Studio, basado en datos públicos proporcionados por la Secretaría de Planeación de la Alcaldía Municipal.
 
-Aunque las variables operativas individuales no mostraron correlaciones significativas con la rentabilidad mensual, su combinación resultó ser altamente predictiva en el modelo construido con el algoritmo de Random Forest. Este modelo alcanzó un R² de 0.8472 y un MSE de 0.0877, superando a otros modelos probados como Regresión Lineal, Lasso, XGBoost de regresión y perceptrón multicapa. Estas métricas evidencian el desempeño superior de Random Forest, desmintiendo la hipótesis inicial que se tenía sobre la limitada incidencia de las características operativas en la rentabilidad de los fondos. 
+El conjunto de datos utilizado contiene información detallada sobre los servicios contratados, las mediciones del consumo de agua, los valores facturados a los usuarios y el respaldo económico otorgado por la alcaldía mediante subsidios. Dado que la base de datos solo abarca el año 2020, el tablero se diseñó como un informe estático sin análisis temporal dinámico.
 
-El análisis permitió generar conocimiento útil sobre los factores, desde la visión operativa de los fondos, que explican la variabilidad de la rentabilidad, priorizando un enfoque interpretativo por encima de la simple modelización predictiva. Al determinar qué características operativas eran más importantes para predecir la rentabilidad mensual, según el modelo, el valor unitario de las operaciones de inversión y el valor de cierre diario de los fondos fueron los factores más influyentes. No obstante, el número de inversionistas y que la entidad que administra el fondo sea de tipo SF-Sociedad Fiduciaria resulta en mayor peso para pronosticar la rentabilidad mensual que si no lo fuese.
+El tablero diseñado en este proyecto facilita la visualización de patrones clave en el acceso y uso del servicio, permitiendo identificar la distribución del consumo según zonas geográficas, la proporción de usuarios con servicio activo o inactivo, así como el impacto de los subsidios según estratos socioeconómicos. Entre los principales hallazgos se destaca que la mayoría de los subsidios se concentran en los estratos más bajos, asegurando acceso al servicio a poblaciones vulnerables, mientras que el consumo de agua presenta variaciones significativas entre distintas zonas de la ciudad. Este informe visual proporciona una herramienta de análisis accesible y estructurada para evaluar la eficiencia en la distribución de los recursos y el impacto del subsidio en la comunidad, contribuyendo a una mejor toma de decisiones en la gestión del servicio de agua potable y alcantarillado.
+
 
 ## Entendimiento de la problemática del negocio
 
-La Superintendencia Financiera de Colombia (Superfinanciera), que opera como ente máximo regulador de las entidades del sistema financiero colombiano, comparte datos sobre las FIC y su rentabilidad periódica a corto, mediano y largo plazo, de manera pública, desde enero de 2016. Esta información que hace parte del proyecto de datos abiertos nacionales para la transparencia y generación de conocimiento, es la base fundamental del presente proyecto en el que se busca entender la dinámica operativa de los fondos y la incidencia de las estrategias de los inversionistas en la generación de rentabilidad en todos los periodos mensuales del año 2024, con intención de construir un modelo predictivo que permita un acercamiento a las rentabilidades esperadas del primer mes del año 2025. 
+La Secretaría de Planeación de la Alcaldía Municipal de Sincelejo, como entidad responsable de la gestión de subsidios para el servicio de agua potable y alcantarillado, dispone de datos públicos sobre la cobertura del servicio, consumo de agua, facturación y apoyo financiero otorgado a los usuarios. Esta información, publicada dentro del marco de transparencia y acceso a datos abiertos, constituye la base de este proyecto.
+
+El análisis busca comprender la distribución de los subsidios, la relación entre consumo y facturación, así como el impacto del respaldo económico en los distintos estratos socioeconómicos de la ciudad. A través del tablero de control visual, se facilita la identificación de patrones clave en el uso del servicio y la eficiencia en la asignación de los subsidios, proporcionando información relevante para la toma de decisiones en la planeación y sostenibilidad del sistema de agua en Sincelejo.
 
 ## Entendimiento de los datos
 
-El conjunto de datos aportados por la Superfinanciera está comprendido por 2,293,315 registros y 26 campos, de los cuales se extrajo solamente 342,565 registros que comprenden todo el histórico del año 2024. Las características o variables incluyen información sobre la fecha exacta de la operación diaria, el tipo y nombre de la empresa que administra el FIC, el tipo y nombre legal del patrimonio común, el compartimento usado en la operación del fondo, el tipo de participación de los inversores, el número de inversores, los valores de precierre y cierre del fondo diario, los rendimientos abonados, el numero de unidades operativas en el fondo, el valor de los aportes recibidos por los inversores, el valor de los retiros, redenciones y anulaciones; y la rentabilidad diaria, mensual, semestral y anual de los fondos.
-Los gráficos a continuación muestran la distribución de los registros y la evolución de la rentabilidad promedio según cada periodo mensual del año 2024.
+El conjunto de datos proporcionado para acceso público contiene registros detallados sobre los subsidios otorgados al servicio de agua potable y alcantarillado en Sincelejo durante el año 2020, que esta comprendido por 19.999 registros y 33 campos (características). Estos campos recopilan información de identificación única de viviendas y establecimientos beneficiados, con variables clave como el tipo de servicio contratado (acueducto y/o alcantarillado), la zona de presión del suministro, el estado del servicio (activo o inactivo), el estrato socioeconómico del usuario, el consumo medido en metros cúbicos, el valor facturado, el monto subsidiado y el porcentaje de cobertura del subsidio según el consumo.
 
-**Figura 1. Distribución de los registros por mes del año 2024**
+La Figura 1 muestra la distribución de los registros del año 2020 en función de la estratificación social.
+
+**Figura 1. Distribución de los registros por estratos socioecnómicos**
 <p align="center">
     <img src="assets/img/img1.png" alt="Distribución de los registros" width="700">
 </p>
-La cantidad de operaciones registradas se mantiene relativamente estable a lo largo de los meses, lo que indica que no existen fluctuaciones significativas en la actividad mensual. Esto sugiere una operación constante en los FIC durante todo el año.
+Se observa que la mayor parte de los subsidios se concentran en los estratos más bajos, con un 49.84% en el estrato 1 y un 28.68% en el estrato 2. A medida que aumenta el nivel socioeconómico, la proporción de subsidios disminuye significativamente, con menos del 1% en los estratos 5 y 6. Esto indica que el programa de subsidios está focalizado en los sectores más vulnerables, alineándose con políticas de equidad social para garantizar el acceso a los servicios básicos a quienes más lo necesitan.
 
-####
-
-**Figura 2. Evolución de la rentabilidad prommedio mensual 2024**
-<p align="center">
-    <img src="assets/img/img2.png" alt="Evolución de la rentabilidad promedio mensual" width="700">
-</p>
-Enero mostró la rentabilidad más alta, alcanzando un valor cercano al 11%. Sin embargo, esta cayó rápidamente durante los primeros meses. En abril, la rentabilidad promedio llegó a su punto más bajo, con valores alrededor del 6%. Entre mayo y agosto, se observó una tendencia al alza, alcanzando un segundo pico en agosto. Desde septiembre, la rentabilidad mostró una caída sostenida, terminando en diciembre con valores bajos similares a los observados en abril.
-
-####
-
-***NOTA:*** Como parte de la preparación para modelado de los datos, se eliminaron columnas innecesarias, se verificaron valores nulos y registros duplicados, se gestionaron valores atípicos y se realizó un formateo de algunas variables al tipo de dato correcto.
+***NOTA:*** Como parte de la preparación de datos, se eliminaron columnas innecesarias, se verificaron valores nulos y registros duplicados y se realizó un formateo de algunas variables al tipo de dato correcto.
 
 ## Modelado y Evaluación
 
