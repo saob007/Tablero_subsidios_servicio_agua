@@ -27,37 +27,37 @@ La Figura 1 muestra la distribución de los registros del año 2020 en función 
 </p>
 Se observa que la mayor parte de los subsidios se concentran en los estratos más bajos, con un 49.84% en el estrato 1 y un 28.68% en el estrato 2. A medida que aumenta el nivel socioeconómico, la proporción de subsidios disminuye significativamente, con menos del 1% en los estratos 5 y 6. Esto indica que el programa de subsidios está focalizado en los sectores más vulnerables, alineándose con políticas de equidad social para garantizar el acceso a los servicios básicos a quienes más lo necesitan.
 
+####
+
 ***NOTA:*** Como parte de la preparación de datos, se eliminaron columnas innecesarias, se verificaron valores nulos y registros duplicados y se realizó un formateo de algunas variables al tipo de dato correcto.
 
-## Modelado y Evaluación
+## Resultados del producto visual
 
-Con base en el análisis exploratorio de datos y el estudio de las correlaciones entre variables, se formuló antes del modelado analítico, el supuesto inicial de baja predictibilidad de las características operativas de los fondos sobre su rentabilidad mensual. El gráfico de calor a continuación, muestra la importancia de las características del modelo Random Forest.
+El tablero de informe desarrollado en Looker Studio fue diseñado para ofrecer una visualización clara y estructurada de la información sobre subsidios, consumo y facturación del servicio de agua potable y alcantarillado en Sincelejo. Su estructura se divide en cuatro secciones principales: cobertura del servicio, mediciones del proveedor, facturación externa y subsidios públicos, permitiendo un análisis detallado de cada aspecto relevante. A continuación en la Figura 2 se muestra una captura estática de las secciones del tablero.
 
-**Figura 3. Correlación de las variables**
+**Figura 2. Imágen del producto visual**
 <p align="center">
-    <img src="assets/img/img4.png" alt="Importancia de las características" width="700">
+    <img src="assets/img/dashboard_preview.png" alt="Importancia de las características" width="700">
 </p>
 
-A pesar de haber identificada la poca existencia de correlaciones entre la rentabilidad mensual y las variables predictoras, se demostró que la hipótesis de que ningun modelo podría ajustarse correctamente a los datos para realizar predicciones aceptables, era parcialmente incorrecta una vez se probaron los algortimos de modelado. Aunque las variables operativas tengan muy baja correlación individual con la rentabilidad mensual de los FIC, el modelo de Random Forest logró modelar relaciones complejas entre estas variables y el objetivo. Esto sugiere que hay información útil en las variables, aunque no sea obvia con modelos simples como los de regresión lineal.
+El diseño del tablero facilita la interpretación de los datos a través de gráficos, tablas y métricas clave, organizadas de manera intuitiva. Esto permite identificar patrones de consumo, distribución geográfica de los servicios, comportamiento de la facturación y el impacto de los subsidios según los diferentes estratos socioeconómicos. El impacto del tablero radica en su capacidad para brindar información clara y accesible a los actores involucrados en la gestión del servicio, mejorando la toma de decisiones sobre la asignación de subsidios y la sostenibilidad del sistema de agua potable en la ciudad.
 
-Se seleccionó un modelo de bosques aleatorios (Random Forest) como opción ganadora, el cual se encuentra compuesto por 100 árboles de decisión para determinar el peso de incidencia de cada carcaterística operativa sobre la rentabilidad mensual de los FIC. El gráfico a continuación muestra que el valor unitario de las operaciones de inversión (valor_unidad_operaciones), el valor del cierre diario del fondo (valor_fondo_cierre_dia_t) y la cantidad de proyectos en los que ha participado (numero_proyectos) contityen los dos factores cláves al momento de determinar la rentabilidad mensual, con un peso conjunto de más del 60% de incidencia. 
+####
 
-El gráfico de barras horizontales muestra la importancia de las características del modelo Random Forest.
+Para garantizar una adecuada interpretación del tablero, se elaboró una tabla con términos y definiciones clave relacionadas con la cobertura del servicio, consumo, facturación y subsidios. Esta tabla explica conceptos como los tipos de servicio contratados, las unidades de medición del consumo, la estructura de facturación y los criterios de asignación de subsidios.  En la Figura 3, se muestra la tabulación de los términos y definiones del contenido visual.
 
-**Figura 4. Importancia de las variables en el modelo Random Forest**
+**Figura 3. Tabla de términos y definiciones**
 <p align="center">
     <img src="assets/img/img3.png" alt="Importancia de las características" width="700">
 </p>
 
-En cuanto al desempeño, el modelo explicó aproximadamente el 84.73% de (R2) la variabilidad de la rentabilidad, indicado que tiene un buen desempeño. Por otro lado, en promedio, las predicciones del modelo tienen un error de ±29.62% de la rentabilidad (MSE = 0.087763 equivalente a RMSE = 0.2962). Aunque el R2 es alto, un error promedio (RMSE) de aproximadamente 29.62% puede ser significativo en el contexto de rentabilidad, ya que podría hacer que las predicciones sean imprecisas en escenarios donde se necesitan estimaciones más ajustadas. Por lo tanto, en fúturos proyectos internos de creación de horizontes financieros no es recomedable la utilización de un modelo analítico basado solamente en variables operativas
+Su importancia radica en proporcionar un marco de referencia claro para los usuarios del tablero, asegurando que los datos sean comprendidos de manera precisa y evitando posibles interpretaciones erróneas. Además, su impacto se traduce en una mejor capacidad analítica por parte de los tomadores de decisiones, al contar con definiciones estandarizadas que facilitan la evaluación del comportamiento del servicio y la distribución de los subsidios.
 
 
 ## Conclusión
 
-- Los fondos de inversión colectiva (FIC) de tipo general tienen, por mucho, el mayor número de registros operativos. Este segmento es claramente el más activo dentro del mercado en el año 2024.
--  Los FIC de mercado monetario, inmobiliarios y bursátiles parecen estar infrautilizados o tener una base de clientes más reducida. Esto resulta en una oportunidad para las administradoras que busquen diversificar su oferta o atraer nuevos inversionistas.
--  Las sociedades fiduciarias parecen ofrecer mayor estabilidad y consistencia en los retornos mensuales, lo que podría ser atractivo para inversores conservadores.
--  Los comisionistas de bolsa reflejan un perfil más arriesgado, con mayores posibilidades de obtener altos retornos, pero también con un mayor riesgo de pérdidas significativas.
-- La falta de correlación significativa en el análisis inicial no implicó ausencia de información útil en las variables. Random Forest, al ser un modelo no lineal y basado en árboles, pudo detectar interacciones complejas y patrones no evidentes en los datos.
-- Se realizaron segundas validaciones cruzadas sobre el modelo ganador Random Forest para verificar que el desempeño aceptable sobre los datos de prueba no se debiese a simple azar, se encontró que incluso con 10 subjconjunto de pruebas cruzadas, el modelo siguió desempeñandose muy bien con un R2 medio de 0.847 y un MSE de 0.087 siendo incluiso ligeramente superior al primer modelo Random Forest desarrollado. En este sentido, se confirma que el modelo Random Forest es el que mejor se ajustó correctamente a los datos y se escogió como base para estudiar el peso de las variables predictoras sobre la rentabilidad mensual. No obstante, en futuras investigaciones, se debe analizar un poco más a fondo si puede llegar a existir un sobre ajuste díficil de detectar con solo realizar validaciones cruzadas.
-- En escenarios fúturos de investigación se recomienda utilizar técnicas adicionales como SHAP o LIME para entender cómo las variables más importantes (como valor_unidad_operaciones, valor_fondo_cierre_dia_t) están influyendo en las predicciones. Esto puede dar insights adicionales sobre las relaciones subyacente. Si es posible, añadir más variables operativas o del contexto macroeconómico donde se ven envueltos los FIC para estudiar si es posible mejorar aún más el modelo.
+- El desarrollo de este tablero permitió visualizar de manera efectiva la cobertura, consumo, facturación y subsidios del servicio de agua potable y alcantarillado en Sincelejo. Se logró identificar patrones clave en la distribución del servicio y el impacto de los subsidios, proporcionando información valiosa para la toma de decisiones. Sin embargo, la falta de datos actualizados y de una dimensión temporal limitó la posibilidad de realizar un análisis dinámico a lo largo del tiempo.
+
+- Para futuros proyectos de análisis de datos, se recomienda actualizar el conjunto de datos con información de años posteriores, permitiendo una evaluación comparativa y la identificación de tendencias en el consumo y asignación de subsidios. También sería útil incorporar nuevas métricas que midan la eficiencia en la entrega de subsidios y su impacto en la sostenibilidad del servicio.
+
+- En cuanto a la mejora del producto visual, se sugiere la implementación de filtros interactivos que permitan a los usuarios explorar los datos con mayor profundidad, así como la integración de herramientas avanzadas de análisis para facilitar la predicción del consumo y la optimización de los subsidios en el futuro.
