@@ -54,7 +54,7 @@ Para garantizar una adecuada interpretación del tablero, se elaboró una tabla 
 Su importancia radica en proporcionar un marco de referencia claro para los usuarios del tablero, asegurando que los datos sean comprendidos de manera precisa y evitando posibles interpretaciones erróneas. Además, su impacto se traduce en una mejor capacidad analítica por parte de los tomadores de decisiones, al contar con definiciones estandarizadas que facilitan la evaluación del comportamiento del servicio y la distribución de los subsidios.
 
 
-## Conclusión
+## Conclusiones y recomendaciones
 
 - El desarrollo de este tablero permitió visualizar de manera efectiva la cobertura, consumo, facturación y subsidios del servicio de agua potable y alcantarillado en Sincelejo. Se logró identificar patrones clave en la distribución del servicio y el impacto de los subsidios, proporcionando información valiosa para la toma de decisiones. Sin embargo, la falta de datos actualizados y de una dimensión temporal limitó la posibilidad de realizar un análisis dinámico a lo largo del tiempo.
 
